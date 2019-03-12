@@ -61,7 +61,6 @@ A Right containing the integer part of the
 //        println(elem)
 //      }
 
-      var numCustomersSoFar = 0
       var currentTime = 0
       var totalWaitTime: Long = 0L
       var customerQueue: scala.collection.mutable.PriorityQueue[CustomerInfo] =
@@ -83,7 +82,6 @@ A Right containing the integer part of the
 //        println(s"current customer is $currentCustomer")
         totalWaitTime += (currentTime - currentCustomer.arrivalTime) + currentCustomer.cookTime
         currentTime += currentCustomer.cookTime
-        numCustomersSoFar += 1;
       }
 //      println(s"wait time = $totalWaitTime")
 //      println(s"current time = $currentTime")
