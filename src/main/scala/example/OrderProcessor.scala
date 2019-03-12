@@ -13,7 +13,7 @@ object CustomerInfo {
     Ordering.by(_.cookTime)
 }
 
-object OrderProcessor extends Greeting with App {
+object OrderProcessor extends App {
 
   /**
     * @param in An InputStream, which contains the following
@@ -111,6 +111,3 @@ A Right containing the integer part of the
   })
 }
 
-trait Greeting {
-  lazy val greeting: String = "hello"
-}
