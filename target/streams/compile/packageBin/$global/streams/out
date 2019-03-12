@@ -1,0 +1,19 @@
+[0m[[0m[0minfo[0m] [0m[0mPackaging /home/marcell/Code/Misc-Test/pizzaServingTime/riskident/target/scala-2.12/riskident_2.12-0.1.0-SNAPSHOT.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	example/CustomerInfo$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/marcell/Code/Misc-Test/pizzaServingTime/riskident/target/scala-2.12/classes/example/CustomerInfo$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	example[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/marcell/Code/Misc-Test/pizzaServingTime/riskident/target/scala-2.12/classes/example[0m
+[0m[[0m[0mdebug[0m] [0m[0m	example/OrderProcessor.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/marcell/Code/Misc-Test/pizzaServingTime/riskident/target/scala-2.12/classes/example/OrderProcessor.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	example/SolutionClimate.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/marcell/Code/Misc-Test/pizzaServingTime/riskident/target/scala-2.12/classes/example/SolutionClimate.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	example/Greeting.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/marcell/Code/Misc-Test/pizzaServingTime/riskident/target/scala-2.12/classes/example/Greeting.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	example/CustomerInfo.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/marcell/Code/Misc-Test/pizzaServingTime/riskident/target/scala-2.12/classes/example/CustomerInfo.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	example/OrderProcessor$delayedInit$body.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/marcell/Code/Misc-Test/pizzaServingTime/riskident/target/scala-2.12/classes/example/OrderProcessor$delayedInit$body.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	example/OrderProcessor$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/marcell/Code/Misc-Test/pizzaServingTime/riskident/target/scala-2.12/classes/example/OrderProcessor$.class[0m
+[0m[[0m[0minfo[0m] [0m[0mDone packaging.[0m
