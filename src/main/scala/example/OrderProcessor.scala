@@ -60,7 +60,7 @@ A Right containing the integer part of the
 //      for (elem <- customerByCookTime) {
 //        println(elem)
 //      }
-
+      var currentCustomerCount = 0
       var currentTime = 0
       var totalWaitTime: Long = 0L
       var customerQueue: scala.collection.mutable.PriorityQueue[CustomerInfo] =
@@ -71,17 +71,22 @@ A Right containing the integer part of the
 //      customerInfoBuffer.foreach(println(_))
 
 //      while (numCustomersSoFar < numberCustomers) {
-      while(customerInfoBuffer.size > 0){
+      while(currentCustomerCount < numberCustomers){
         customerQueue.enqueue(
           customerInfoBuffer.takeWhile(_.arrivalTime <= currentTime): _*)
+        customerInfoBuffer --= customerQueue
 
-//        println("current state of the queue")
-//        customerQueue.foreach{println(_)}
+        println("current state of the queue")
+        customerQueue.foreach{println(_)}
+        println("State of the buffer after removal")
+        customerInfoBuffer.foreach{println(_)}
+
         val currentCustomer = customerQueue.dequeue()
-        customerInfoBuffer -= currentCustomer
-//        println(s"current customer is $currentCustomer")
+
+        println(s"current customer is $currentCustomer")
         totalWaitTime += (currentTime - currentCustomer.arrivalTime) + currentCustomer.cookTime
         currentTime += currentCustomer.cookTime
+        currentCustomerCount += 1
       }
 //      println(s"wait time = $totalWaitTime")
 //      println(s"current time = $currentTime")
@@ -102,8 +107,7 @@ A Right containing the integer part of the
   }
 
   //start MAIN
-  //val path : URL = ClassLoader.getSystemResource("input.md")
-  val fileInputStream = new FileInputStream(new File("input.md"))
+  val fileInputStream = new FileInputStream(new File("input3.md"))
   println(process(fileInputStream) match {
     case Left(str) => s"process functions error out with $str"
     case Right(averageWaitTime) =>
