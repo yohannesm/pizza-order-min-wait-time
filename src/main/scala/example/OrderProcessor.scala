@@ -51,15 +51,6 @@ A Right containing the integer part of the
       val customerInfoBuffer =
         collection.mutable.ArrayBuffer(customerInfoArray: _*)
 
-//      println(s"num customers $numberCustomers")
-//      for (elem <- customerInfoArray) {
-//        println(elem)
-//      }
-//      val customerByCookTime =
-//        customerInfoArray.sorted(CustomerInfo.orderingByCookTime)
-//      for (elem <- customerByCookTime) {
-//        println(elem)
-//      }
       var currentCustomerCount = 0
       var currentTime = 0
       var totalWaitTime: Long = 0L
@@ -67,30 +58,18 @@ A Right containing the integer part of the
         new mutable.PriorityQueue[CustomerInfo]()(
           CustomerInfo.orderingByCookTime.reverse)
 
-//      println("array buffer state")
-//      customerInfoBuffer.foreach(println(_))
-
-//      while (numCustomersSoFar < numberCustomers) {
-      while(currentCustomerCount < numberCustomers){
+      while (currentCustomerCount < numberCustomers) {
+        //take all the customers that is currently in the store
+        //and then remove those customers from the array buffer
         customerQueue.enqueue(
           customerInfoBuffer.takeWhile(_.arrivalTime <= currentTime): _*)
         customerInfoBuffer --= customerQueue
 
-        println("current state of the queue")
-        customerQueue.foreach{println(_)}
-        println("State of the buffer after removal")
-        customerInfoBuffer.foreach{println(_)}
-
         val currentCustomer = customerQueue.dequeue()
-
-        println(s"current customer is $currentCustomer")
         totalWaitTime += (currentTime - currentCustomer.arrivalTime) + currentCustomer.cookTime
         currentTime += currentCustomer.cookTime
         currentCustomerCount += 1
       }
-//      println(s"wait time = $totalWaitTime")
-//      println(s"current time = $currentTime")
-      //println(strings.mkString("\n"))
       bufferedReader.close()
       Right((totalWaitTime / numberCustomers))
     } catch {
@@ -106,7 +85,7 @@ A Right containing the integer part of the
     }
   }
 
-  //start MAIN
+  //start MAIN function
   val fileInputStream = new FileInputStream(new File("input3.md"))
   println(process(fileInputStream) match {
     case Left(str) => s"process functions error out with $str"
@@ -114,4 +93,3 @@ A Right containing the integer part of the
       s"Process functions is successful with average wait time = $averageWaitTime"
   })
 }
-
