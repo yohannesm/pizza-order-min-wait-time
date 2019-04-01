@@ -1,17 +1,9 @@
 package example
 
-import java.io.{File, FileInputStream, InputStream}
+import java.io.{File, FileInputStream, IOException, InputStream}
 
 import scala.collection.mutable
 import scala.collection.mutable.ArrayBuffer
-
-case class CustomerInfo(arrivalTime: Int, cookTime: Int)
-
-object CustomerInfo {
-
-  val orderingByCookTime: Ordering[CustomerInfo] =
-    Ordering.by(_.cookTime)
-}
 
 object OrderProcessor extends App {
 
@@ -34,13 +26,24 @@ A Right containing the integer part of the
                 A Left containing a syntax error description
                 otherwise.
     */
+  case class CustomerInfo(arrivalTime: Int, cookTime: Int)
+
+  object CustomerInfo {
+
+    val orderingByCookTime: Ordering[CustomerInfo] =
+      Ordering.by(_.cookTime)
+  }
+
   def process(in: InputStream): Either[String, Long] = {
     val bufferedReader = scala.io.Source.fromInputStream(in).bufferedReader()
     val streamStrings =
       Stream.continually(bufferedReader.readLine()).takeWhile(_ != null)
-    val arrayInputs = streamStrings.toArray
+    //NB: I can probably optimize this further by taking the input from this stream one at a time,
+    //but from the constraint of N seems like this is fine for now
+
     //take the number of customers we need to process, drop the first element to process the rest
     try {
+      val arrayInputs = streamStrings.toArray
       val numberCustomers = arrayInputs(0).toInt
       val customersRawArray = arrayInputs.drop(1)
       val customerInfoArray = customersRawArray
@@ -86,10 +89,16 @@ A Right containing the integer part of the
   }
 
   //start MAIN function
-  val fileInputStream = new FileInputStream(new File("input3.md"))
-  println(process(fileInputStream) match {
-    case Left(str) => s"process functions error out with $str"
-    case Right(averageWaitTime) =>
-      s"Process functions is successful with average wait time = $averageWaitTime"
-  })
+  try {
+    val fileInputStream = new FileInputStream(new File("input.md"))
+    println(process(fileInputStream) match {
+      case Left(str) => s"process functions error out with $str"
+      case Right(averageWaitTime) =>
+        s"Process functions is successful with average wait time = $averageWaitTime"
+    })
+  } catch {
+    case ioException: IOException => s"Error with $ioException and message ${ioException.getMessage}"
+    case ex : Exception =>
+      s"Error processing with exception ${ex} and message ${ex.getMessage}"
+  }
 }

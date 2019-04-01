@@ -4,7 +4,7 @@
 		module="riskident_2.12"
 		revision="0.1.0-SNAPSHOT"
 		status="integration"
-		publication="20190307212305"
+		publication="20190401173331"
 	>
 		<description>
 		RiskIdent
